@@ -61,16 +61,17 @@ zmvbbd() {
     kubectl port-forward svc/zelus-model-versioner -n zelus-model-versioner :80 | cloud_sql_proxy -instances=zelus-basketball-dev:us-central1:basketball-data=tcp:5432
 }
 dev-tag() {
-  # Arg $1 - dev tag label typically a JIRA ticket number
+  # Arg $1 - sport name
+  # Arg $2 - dev tag label typically a JIRA ticket number
 
   GIT_TIMESTAMP=$(date -u "+%Y%m%d.%H%M%S");
-  if [[ $# -eq 1 ]] ; then
-     echo "Tagging and pushing with dev-basketball-ct-$1-$GIT_TIMESTAMP"
+  if [[ $# -eq 2 ]] ; then
+     echo "Tagging and pushing with dev-$1-ct-$1-$GIT_TIMESTAMP"
      sleep 3
-     git tag dev-basketball-ct-$1-$GIT_TIMESTAMP
-     git push origin dev-basketball-ct-$1-$GIT_TIMESTAMP
+     git tag dev-$1-ct-$2-$GIT_TIMESTAMP
+     git push origin dev-$1-ct-$2-$GIT_TIMESTAMP
   else
-     echo "Error: requires exactly one argument"
+    echo "Error: requires two arguments (sport and label)"
   fi
 }
 release-tag() {
