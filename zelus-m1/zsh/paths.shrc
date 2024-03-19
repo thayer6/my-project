@@ -29,7 +29,7 @@ export docs=~/Documents
 export PYSPARK_PYTHON=python3
 #export DATASETS=/Users/sspaeti/Simon/Sync/Business/13_sspaeti/Real-estate/_DATASETS
 
-export DAGSTER_HOME=~/.dagster
+#export DAGSTER_HOME=~/.dagster
 
 #vim stuff
 export MYVIMRC=~/.config/nvim/init.lua
