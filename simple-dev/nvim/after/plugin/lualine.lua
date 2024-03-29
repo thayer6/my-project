@@ -39,6 +39,14 @@ local location = {
     cond = hide_in_width(40)
 }
 
+local function attached_lsp()
+    local clients = vim.lsp.get_active_clients()
+    if #clients > 0 then
+        return clients[1].name
+    end
+    return ""
+end
+
 local active_lsp = {
     attached_lsp,
     icon = ',',

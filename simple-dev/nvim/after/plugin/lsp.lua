@@ -3,11 +3,11 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'pyright', -- Python
-  'r_language_server', -- R
-  'sqls', -- SQL 
   'eslint', -- JavaScript
   'lua_ls', -- Lua
+  'r_language_server', -- R
+  'sqlls', -- SQL 
+  'pyright', -- Python
 })
 
 -- Fix Undefined global 'vim'
@@ -23,6 +23,7 @@ lsp.configure('lua_ls', {
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
+-- Mappings for navigating autocomplete menus
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
@@ -43,11 +44,6 @@ local sources = {
     { name = 'path' },
     { name = 'buffer' },
   }
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
 
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings,

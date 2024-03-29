@@ -1,21 +1,20 @@
+# Files
+alias ll='ls -lah'
+alias cat=bat
+alias ls='exa'
+alias r="radian"
+
 # Python 3
 alias python=python3
 alias pip=pip3
-alias ip=ipython
 
-# R
-alias R='R --no-restore-data --no-save'
-alias r="radian"
-
-# Neovim
+# NeoVim
 export EDITOR="nvim"
 alias vim=nvim
 
-# Files
-alias ll='ls -la'
-alias ls='exa'
-alias c=clear
-alias cat=bat
+# direnv
+alias da='direnv allow'
+alias dr='direnv reload'
 
 # Git
 alias g='git'
@@ -27,7 +26,7 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gm='git commit -m'
 alias gma='git commit -am'
-alias gb='git branch -vv'
+alias gb='git branch'
 alias gco='git checkout'
 alias gra='git remote add'
 alias grr='git remote rm'
@@ -39,21 +38,3 @@ alias gcpr="gh pr create -w"
 alias gc="git cj -m"
 alias lg=lazygit
 alias glom="git pull origin main"
-alias gsync="git checkout main && git pull --rebase && git fetch --prune"
-
-# Docker
-alias docker-clean="docker system prune -a --volumes"
-
-# Kubernetes
-alias ka="kubectl apply -f $1"
-alias kdj="kubectl delete job $1"
-
-# direnv
-alias da='direnv allow'
-alias dr='direnv reload'
-
-# DuckDB
-alias duckdb="/Applications/duckdb ; exit;"
-
-# terraform
-alias tf="./terraform.sh"
