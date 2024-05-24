@@ -27,20 +27,30 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				"html",
-				"cssls",
-				"lua_ls",
-				"pyright",
+				"lua_ls", -- lua language server
+				"pyright", -- python language server
+				"pylsp", -- python language server
+				"r_language_server", -- R language server
+				"bashls", -- bash language server
+				"docker_compose_language_service", -- docker compose language server
+				"dockerls", -- docker language server
+				"sqlls", -- sql language server
+				"terraformls", -- terraform language server
+				"yamlls", -- yaml language server
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
-				"isort", -- python formatter
 				"black", -- python formatter
-				"pylint", -- python linter
+				"isort", -- python formatter
+				"prettier", -- markdown formatter
+				"sqlfluff", -- sql linting
+				"write-good", -- markdown formatter
+				"beautysh", -- zsh formatter
+				"tflint", -- terraform linter
+				"yamlfix", -- yaml formatter
 			},
 		})
 	end,

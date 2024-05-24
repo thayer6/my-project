@@ -13,7 +13,8 @@ return {
 		},
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		"rafamadriz/friendly-snippets", -- useful snippets
-		"onsails/lspkind.nvim", -- vs-code like pictograms
+		"onsails/lspkind.nvim", -- vs-code like pictogramsa
+		"jalvesaq/cmp-nvim-r",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -21,6 +22,8 @@ return {
 		local luasnip = require("luasnip")
 
 		local lspkind = require("lspkind")
+
+		local cmp_nvim_r = require("cmp_nvim_r")
 
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 		require("luasnip.loaders.from_vscode").lazy_load()
@@ -49,6 +52,11 @@ return {
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
+				{ name = "cmp_nvim_r" }, -- R completion
+			}),
+
+			cmp_nvim_r.setup({
+				filetypes = { "r", "rmd", "quarto" },
 			}),
 
 			-- configure lspkind for vs-code like pictograms in completion menu

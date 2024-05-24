@@ -1,4 +1,0 @@
-[pycodestyle]
-count = False
-ignore = E501
-

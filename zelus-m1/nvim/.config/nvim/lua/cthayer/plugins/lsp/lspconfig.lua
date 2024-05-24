@@ -88,56 +88,47 @@ return {
 					capabilities = capabilities,
 				})
 			end,
-			["svelte"] = function()
-				-- configure svelte server
-				lspconfig["svelte"].setup({
-					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						vim.api.nvim_create_autocmd("BufWritePost", {
-							pattern = { "*.js", "*.ts" },
-							callback = function(ctx)
-								-- Here use ctx.match instead of ctx.file
-								client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-							end,
-						})
-					end,
-				})
-			end,
-			["graphql"] = function()
-				-- configure graphql language server
-				lspconfig["graphql"].setup({
-					capabilities = capabilities,
-					filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-				})
-			end,
-			["emmet_ls"] = function()
-				-- configure emmet language server
-				lspconfig["emmet_ls"].setup({
-					capabilities = capabilities,
-					filetypes = {
-						"html",
-						"typescriptreact",
-						"javascriptreact",
-						"css",
-						"sass",
-						"scss",
-						"less",
-						"svelte",
-					},
-				})
-			end,
 			["pyright"] = function()
-				-- configure emmet language server
+				-- configure pyright language server
 				lspconfig["pyright"].setup({
 					capabilities = capabilities,
 					filetypes = { "python" },
 				})
 			end,
 			["pylsp"] = function()
-				-- configure emmet language server
+				-- configure pylsp language server
 				lspconfig["pylsp"].setup({
 					capabilities = capabilities,
 					filetypes = { "python" },
+					settings = {
+						pylsp = {
+							plugins = {
+								autopep8 = {
+									enabled = false,
+								},
+								black = {
+									enabled = false,
+								},
+								flake8 = {
+									enabled = true,
+									maxLineLength = 88,
+								},
+								pycodestyle = {
+									enabled = false,
+								},
+								pyflakes = {
+									enabled = false,
+								},
+								pylint = {
+									enabled = true,
+									args = { "--rcfile=/Users/cthayer/.pylintrc" },
+								},
+								yapf = {
+									enabled = false,
+								},
+							},
+						},
+					},
 				})
 			end,
 			["lua_ls"] = function()
@@ -155,6 +146,48 @@ return {
 							},
 						},
 					},
+				})
+			end,
+			["bashls"] = function()
+				lspconfig["bashls"].setup({
+					capabilities = capabilities,
+					filetypes = { "sh", "shrc", "zshrc" },
+				})
+			end,
+			["docker_compose_language_service"] = function()
+				lspconfig["docker_compose_language_service"].setup({
+					capabilities = capabilities,
+					filetypes = { "yaml" },
+				})
+			end,
+			["dockerls"] = function()
+				lspconfig["dockerls"].setup({})
+			end,
+			["sqlls"] = function()
+				lspconfig["sqlls"].setup({
+					capabilities = capabilities,
+					filetypes = { "sql" },
+					root_dir = function()
+						return vim.loop.cwd() -- Fallback to the current working directory
+					end,
+				})
+			end,
+			["terraformls"] = function()
+				lspconfig["terraformls"].setup({
+					capabilities = capabilities,
+					filetypes = { "tf" },
+				})
+			end,
+			["r_language_server"] = function()
+				lspconfig["r_language_server"].setup({
+					capabilities = capabilities,
+					filetypes = { "r", "rmd" },
+				})
+			end,
+			["yamlls"] = function()
+				lspconfig["yamlls"].setup({
+					capabilities = capabilities,
+					filetypes = { "yaml", "toml" },
 				})
 			end,
 		})
